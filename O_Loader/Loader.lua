@@ -1,0 +1,2 @@
+if game.PlaceId == "" then
+    
