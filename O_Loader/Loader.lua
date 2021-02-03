@@ -1,2 +1,1 @@
-if game.PlaceId == "" then
-    
+print("Test")
