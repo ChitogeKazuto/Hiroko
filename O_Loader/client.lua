@@ -1,3 +1,5 @@
+-- // define alias for http function
+
 local http_request = http_request;
 if syn then
 	http_request = syn.request
@@ -13,6 +15,8 @@ end
 if (not http_request) then
 	return game:GetService('Players').LocalPlayer:Kick('Unable to find proper request function')
 end
+
+-- // define hash function
 
 local hash; do
     local MOD = 2^32
@@ -120,15 +124,17 @@ local hash; do
     end
 end
 
-local key = _G.Key
+local key = _G.Key = ""
 local data = http_request({
 	Url = ('https://example.cool/whitelistv2/server.php?key=' .. key);
 	Method = 'GET';
 })
 
 if data.StatusCode == 200 then
+	-- // if the request did not error...
 	local response = data.Body;
 	if response == hash(key) then
+		-- // wow, they are authenticated!
 		print("whitelisted!")
 	end
 end

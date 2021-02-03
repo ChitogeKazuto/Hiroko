@@ -1,5 +1,10 @@
 <?php
+/*  i am not a very great php coder. sorry for the messy code :) */
+/* list of headers just incase another exploit shows up and adds it */
+
 $hwidTypes = array("Syn-Fingerprint", "Exploit-Guid", "Proto-User-Identifier", "Sentinel-Fingerprint");
+/* the reason i made a key for each exploit is to demonstrate the differences between the HWID for each exploit that supports a header */
+/* i suggest that you clear this database or i will be able to use your script lol */
 
 $database = array(
 	array(
@@ -34,6 +39,9 @@ function fetch_hwid($headers) {
 	}
 
 	if ($count > 1) {
+		/* prevent people from setting multiple of the headers to bypass checks :) */
+		/* does this work?? */
+
 		$hwid = NULL;
 	}
 
@@ -56,8 +64,11 @@ if (isset($_GET["key"])) {
 			if ($key_matches and $hwid_matches) {
 				$didUserPass = TRUE;
 
+				/* hey, they are whitelisted! give them the correct response */
+
 				echo(hash("sha256", $stored_key));
 			} elseif ($key_matches and !$hwid_matches) {
+				/* hey, why does their hardware id not match but key does? NO SHARING ALLOWED!*/
 
 				$errorMsg = "hwid mismatch";
 			}
