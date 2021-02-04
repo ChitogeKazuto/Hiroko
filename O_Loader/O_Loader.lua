@@ -2,7 +2,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Chito
 
 local Players = game:GetService("Players")
 
-if _G.CanDo then
+if CanDo then
     print("True")
 else
     Players.LocalPlayer:Kick("HAHAHA You Can't Load In Github")
