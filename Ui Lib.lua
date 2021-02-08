@@ -2167,5 +2167,4 @@ do
 	end
 end
 
-print("Hiroko X | Ui Loaded")
 return library
